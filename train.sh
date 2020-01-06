@@ -1,0 +1,2 @@
+#!/bin/bash
+python3 train.py --snapshot imagenet --phi 0 --gpu 0 --random-transform --compute-val-loss --no-evaluation --freeze-backbone --freeze-bn --batch-size 1 --steps 100 coco /media/rosu/Data/phd/c_ws/src/mbzirc_2020/challenge_1_synthetic_data/recordings/copter_images
