@@ -15,7 +15,8 @@ class Generator(keras.utils.Sequence):
     def __init__(
             self,
             phi=0,
-            image_sizes=(512, 640, 768, 896, 1024, 1280, 1408),
+            # image_sizes=(512, 640, 768, 896, 1024, 1280, 1408),
+            image_sizes=(256, 640, 768, 896, 1024, 1280, 1408),
             misc_effect=None,
             visual_effect=None,
             batch_size=1,

@@ -16,7 +16,8 @@ from layers import ClipBoxes, RegressBoxes, FilterDetections, wBiFPNAdd, BatchNo
 from initializers import PriorProbability
 
 w_bifpns = [64, 88, 112, 160, 224, 288, 384]
-image_sizes = [512, 640, 768, 896, 1024, 1280, 1408]
+# image_sizes = [512, 640, 768, 896, 1024, 1280, 1408]
+image_sizes = [256, 640, 768, 896, 1024, 1280, 1408] #Smaller image so I can actually train on my network
 backbones = [EfficientNetB0, EfficientNetB1, EfficientNetB2,
              EfficientNetB3, EfficientNetB4, EfficientNetB5, EfficientNetB6]
 

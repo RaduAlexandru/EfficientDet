@@ -19,6 +19,7 @@ import os
 import numpy as np
 from pycocotools.coco import COCO
 import cv2
+import sys
 
 
 class CocoGenerator(Generator):
@@ -37,7 +38,8 @@ class CocoGenerator(Generator):
         """
         self.data_dir = data_dir
         self.set_name = set_name
-        self.coco = COCO(os.path.join(data_dir, 'annotations', 'instances_' + set_name + '.json'))
+        # self.coco = COCO(os.path.join(data_dir, 'annotations', 'instances_' + set_name + '.json'))
+        self.coco = COCO(os.path.join(data_dir, 'coco_format_dataset.json'))
         self.image_ids = self.coco.getImgIds()
 
         self.load_classes()
@@ -123,7 +125,12 @@ class CocoGenerator(Generator):
         """
         # {'license': 2, 'file_name': '000000259765.jpg', 'coco_url': 'http://images.cocodataset.org/test2017/000000259765.jpg', 'height': 480, 'width': 640, 'date_captured': '2013-11-21 04:02:31', 'id': 259765}
         image_info = self.coco.loadImgs(self.image_ids[image_index])[0]
-        path = os.path.join(self.data_dir, 'images', self.set_name, image_info['file_name'])
+        # path = os.path.join(self.data_dir, 'images', self.set_name, image_info['file_name'])
+        path = os.path.join(self.data_dir, image_info['file_name'])
+        # if (not os.path.exists(path)):
+            # err="Could not find image on " + path
+            # sys.exit(err)
+        # print("loading path ", path)
         image = cv2.imread(path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         return image
